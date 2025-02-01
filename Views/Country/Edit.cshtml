@@ -1,0 +1,158 @@
+@model ASPNetCoreApp.Models.Country
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+
+<h4>Country</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-route-id="@Model.Code">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Code" />
+            <input type="hidden" name="_method" value="PUT" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Continent" class="control-label"></label>
+                <input asp-for="Continent" class="form-control" />
+                <span asp-validation-for="Continent" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Region" class="control-label"></label>
+                <input asp-for="Region" class="form-control" />
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SurfaceArea" class="control-label"></label>
+                <input asp-for="SurfaceArea" class="form-control" />
+                <span asp-validation-for="SurfaceArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IndepYear" class="control-label"></label>
+                <input asp-for="IndepYear" class="form-control" />
+                <span asp-validation-for="IndepYear" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Population" class="control-label"></label>
+                <input asp-for="Population" class="form-control" />
+                <span asp-validation-for="Population" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LifeExpectancy" class="control-label"></label>
+                <input asp-for="LifeExpectancy" class="form-control" />
+                <span asp-validation-for="LifeExpectancy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gnp" class="control-label"></label>
+                <input asp-for="Gnp" class="form-control" />
+                <span asp-validation-for="Gnp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gnpold" class="control-label"></label>
+                <input asp-for="Gnpold" class="form-control" />
+                <span asp-validation-for="Gnpold" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LocalName" class="control-label"></label>
+                <input asp-for="LocalName" class="form-control" />
+                <span asp-validation-for="LocalName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GovernmentForm" class="control-label"></label>
+                <input asp-for="GovernmentForm" class="form-control" />
+                <span asp-validation-for="GovernmentForm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HeadOfState" class="control-label"></label>
+                <input asp-for="HeadOfState" class="form-control" />
+                <span asp-validation-for="HeadOfState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Capital" class="control-label"></label>
+                <input asp-for="Capital" class="form-control" />
+                <span asp-validation-for="Capital" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Code2" class="control-label"></label>
+                <input asp-for="Code2" class="form-control" />
+                <span asp-validation-for="Code2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+</body>
+
+<!-- Script para enviar el contenido del formulario mediante el método PUT
+
+<script type="text/javascript">
+let form = document.querySelector("form");
+
+form.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+
+    // Obtener los datos del formulario
+    const formData = new FormData(form);
+
+    // Convertir FormData a un objeto plano
+    const data = {};
+    formData.forEach((value, key) => {
+        data[key] = value;
+    });
+
+    console.log(formData);
+    console.log(data);
+    console.log(JSON.stringify(data));
+
+    // Obtener el ID del país desde el atributo asp-route-id del formulario
+    const countryId = "@Model.Code"; // Esto se renderiza en el servidor
+
+    // Hacer la solicitud fetch con el método PUT
+    fetch(`/api/Country/Edit/${countryId}`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data) // Convertir el objeto a JSON
+    })
+    .then(response => {
+        if (response.ok) {
+            // Si la respuesta es exitosa, redirigir o mostrar un mensaje
+            alert("Country updated successfully!");
+            window.location.href = `/Country/Edit/${countryId}`; // Redirigir al listado
+        } else {
+            // Si hay un error, mostrar un mensaje
+            alert("Error updating country.");
+        }
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("An error occurred while updating the country.");
+    });
+});
+-->
+</script>
+</html>
